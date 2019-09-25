@@ -30,7 +30,8 @@ def get_paths(path, name='coco', use_restval=False):
     roots = {}
     ids = {}
     if 'coco' == name:
-        imgdir = os.path.join(path, 'images')
+        # imgdir = os.path.join(path, '')
+        imgdir = '/home/jupyter/filestore/ms-coco/'
         capdir = os.path.join(path, 'annotations')
         roots['train'] = {
             'img': os.path.join(imgdir, 'train2014'),
