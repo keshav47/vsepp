@@ -361,10 +361,7 @@ class VSE(object):
         """Compute the loss given pairs of image and caption embeddings
         """
         loss = self.criterion(img_emb, cap_emb)
-        print("###############")
-        print(loss.data[0])
-        print("###############")
-        self.logger.update('Le', loss.data[0], img_emb.size(0))
+        self.logger.update('Le', loss.data, img_emb.size(0))
         return loss
 
     def train_emb(self, images, captions, lengths, ids=None, *args):
@@ -376,10 +373,6 @@ class VSE(object):
 
         # compute the embeddings
         img_emb, cap_emb = self.forward_emb(images, captions, lengths)
-        print("*******************")
-        print(img_emb.size(0))
-        print(cap_emb.size(0))
-        print("*******************")
         # measure accuracy and record loss
         self.optimizer.zero_grad()
         loss = self.forward_loss(img_emb, cap_emb)
