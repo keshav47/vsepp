@@ -374,8 +374,8 @@ class VSE(object):
         # compute the embeddings
         img_emb, cap_emb = self.forward_emb(images, captions, lengths)
         print("*******************")
-        print(img_emb.size())
-        print(cap_emb.size())
+        print(img_emb.size(0))
+        print(cap_emb.size(0))
         print("*******************")
         # measure accuracy and record loss
         self.optimizer.zero_grad()
