@@ -109,7 +109,7 @@ def build_vocab(data_path, data_name, jsons, threshold):
 
 
 def main(data_path, data_name):
-    vocab = build_vocab(data_path, data_name, jsons=annotations, threshold=4)
+    vocab = build_vocab(data_path, data_name, jsons=annotations, threshold=0)
     with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'wb') as f:
         pickle.dump(vocab, f, pickle.HIGHEST_PROTOCOL)
     print("Saved vocabulary file to ", './vocab/%s_vocab.pkl' % data_name)
