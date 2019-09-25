@@ -362,7 +362,7 @@ class VSE(object):
         """
         loss = self.criterion(img_emb, cap_emb)
         print("###############")
-        print(loss.data)
+        print(loss.data[0])
         print("###############")
         self.logger.update('Le', loss.data[0], img_emb.size(0))
         return loss
