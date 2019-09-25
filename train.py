@@ -82,8 +82,9 @@ def main():
     tb_logger.configure(opt.logger_name, flush_secs=5)
 
     # Load Vocabulary Wrapper
-    vocab = pickle.load(open(os.path.join(
-        opt.vocab_path, '%s_vocab.pkl' % opt.data_name), 'rb'))
+    # vocab = pickle.load(open(os.path.join(
+    #     opt.vocab_path, '%s_vocab.pkl' % opt.data_name), 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
     opt.vocab_size = len(vocab)
 
     # Load data loaders
