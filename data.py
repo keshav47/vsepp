@@ -30,7 +30,7 @@ def get_paths(path, name='coco', use_restval=False):
     roots = {}
     ids = {}
     if 'coco' == name:
-        # imgdir = os.path.join(path, '')
+        # imgdir = os.path.join(path, 'images')
         imgdir = '/home/jupyter/filestore/ms-coco/'
         capdir = os.path.join(path, 'annotations')
         roots['train'] = {
@@ -72,7 +72,13 @@ def get_paths(path, name='coco', use_restval=False):
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
-
+    elif 'fashion' == name:
+        imgdir = '/home/jupyter/filestore/fashion_gen_data/images'
+        cap = '/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json'
+        roots['train'] = {'img': imgdir, 'cap': cap}
+        roots['val'] = {'img': imgdir, 'cap': cap}
+        roots['test'] = {'img': imgdir, 'cap': cap}
+        ids = {'train': None, 'val': None, 'test': None}
     return roots, ids
 
 
@@ -278,7 +284,7 @@ def get_loader_single(data_name, split, root, json, vocab, transform,
                               json=json,
                               vocab=vocab,
                               transform=transform, ids=ids)
-    elif 'f8k' in data_name or 'f30k' in data_name:
+    elif 'f8k' in data_name or 'f30k' in data_name or 'fashion' in data_name:
         dataset = FlickrDataset(root=root,
                                 split=split,
                                 json=json,

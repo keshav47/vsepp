@@ -16,6 +16,7 @@ annotations = {
     'f30k_precomp': ['train_caps.txt', 'dev_caps.txt'],
     'f8k': ['dataset_flickr8k.json'],
     'f30k': ['dataset_flickr30k.json'],
+    'fashion': ['dataset_fashion.json']
 }
 
 
@@ -53,7 +54,7 @@ def from_coco_json(path):
 
 
 def from_flickr_json(path):
-    dataset = json.load(open(path, 'r'))['images']
+    dataset = json.load("/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json")['images']
     captions = []
     for i, d in enumerate(dataset):
         captions += [str(x['raw']) for x in d['sentences']]
@@ -76,7 +77,7 @@ def build_vocab(data_path, data_name, jsons, threshold):
         full_path = os.path.join(os.path.join(data_path, data_name), path)
         if data_name == 'coco':
             captions = from_coco_json(full_path)
-        elif data_name == 'f8k' or data_name == 'f30k':
+        elif data_name == 'f8k' or data_name == 'f30k' or data_name == 'fashion':
             captions = from_flickr_json(full_path)
         else:
             captions = from_txt(full_path)
@@ -106,7 +107,7 @@ def build_vocab(data_path, data_name, jsons, threshold):
 
 def main(data_path, data_name):
     vocab = build_vocab(data_path, data_name, jsons=annotations, threshold=4)
-    with open('./vocab/%s_vocab.pkl' % data_name, 'wb') as f:
+    with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'wb') as f:
         pickle.dump(vocab, f, pickle.HIGHEST_PROTOCOL)
     print("Saved vocabulary file to ", './vocab/%s_vocab.pkl' % data_name)
 
