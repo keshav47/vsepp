@@ -361,6 +361,9 @@ class VSE(object):
         """Compute the loss given pairs of image and caption embeddings
         """
         loss = self.criterion(img_emb, cap_emb)
+        print("###############")
+        print(loss)
+        print("###############")        
         self.logger.update('Le', loss.data[0], img_emb.size(0))
         return loss
 
@@ -380,9 +383,6 @@ class VSE(object):
         # measure accuracy and record loss
         self.optimizer.zero_grad()
         loss = self.forward_loss(img_emb, cap_emb)
-        print("###############")
-        print(loss)
-        print("###############")
         # compute gradient and do SGD step
         loss.backward()
         if self.grad_clip > 0:
