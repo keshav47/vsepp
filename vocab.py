@@ -54,7 +54,10 @@ def from_coco_json(path):
 
 
 def from_flickr_json(path):
-    dataset = json.load("/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json")['images']
+    with open('/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json') as json_file:
+        dataset = json.load(json_file)
+    dataset = dataset['images']
+    # dataset = json.load("/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json")['images']
     captions = []
     for i, d in enumerate(dataset):
         captions += [str(x['raw']) for x in d['sentences']]
