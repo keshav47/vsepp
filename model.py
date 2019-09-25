@@ -354,9 +354,7 @@ class VSE(object):
 
         # Forward
         img_emb = self.img_enc(images)
-        print(img_emb[0])
         cap_emb = self.txt_enc(captions, lengths)
-        print(cap_emb[0])
         return img_emb, cap_emb
 
     def forward_loss(self, img_emb, cap_emb, **kwargs):
@@ -375,7 +373,10 @@ class VSE(object):
 
         # compute the embeddings
         img_emb, cap_emb = self.forward_emb(images, captions, lengths)
-
+        print("*******************")
+        print(img_emb.size())
+        print(cap_emb.size())
+        print("*******************")
         # measure accuracy and record loss
         self.optimizer.zero_grad()
         loss = self.forward_loss(img_emb, cap_emb)
