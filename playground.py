@@ -80,7 +80,7 @@ def main():
     vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
-    checkpoint = torch.load("run/runX/model_best.pth.tar")
+    checkpoint = torch.load("home/jupyter/keshav/vsepp/run/runX/model_best.pth.tar")
     model = VSE(opt)
     model.load_state_dict(checkpoint['model'])
 
