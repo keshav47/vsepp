@@ -89,8 +89,9 @@ def main():
 
 
     for i, train_data in enumerate(train_loader):
-        print(train_data[0].size())
-        break
+        print(train_data[1])
+        if i ==5:
+            break
 
 if __name__ == '__main__':
     main()
