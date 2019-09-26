@@ -3,7 +3,7 @@ import os
 import pickle
 
 import numpy
-from data import get_test_loader
+import data
 import time
 import numpy as np
 from vocab import Vocabulary  # NOQA
