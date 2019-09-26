@@ -87,14 +87,19 @@ def main():
     train_loader, val_loader = data.get_loaders(
         opt.data_name, vocab, opt.crop_size, opt.batch_size, opt.workers, opt)
 
-    # image_array = numpy.zeros(())
+    image_array = numpy.zeros((7998,1024))
+    text_array = numpy.zeros((7998,1024))
     for i, (images, captions, lengths, ids) in enumerate(train_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
-        print(img_emb.size())
-        print(cap_emb.size())
+        image_array[i] = img_emb.cpu().detach().numpy()
+        text_array[i] = cap_emb.cpu().detach().numpy()
+        if i%100==0:
+            print("===========> ",i)
 
-        break
+    numpy.save("image_embedding.npy",image_array)
+    numpy.save("text_embedding.npy",text_array)
+
 
 if __name__ == '__main__':
 
