@@ -210,7 +210,6 @@ def i2t(images, captions, npts=None, measure='cosine', return_ranks=False):
     """
     if npts is None:
         npts = int(images.shape[0] / 5)
-        print(npts)
     index_list = []
 
     ranks = numpy.zeros(npts)
@@ -264,7 +263,6 @@ def t2i(images, captions, npts=None, measure='cosine', return_ranks=False):
     """
     if npts is None:
         npts = int(images.shape[0] / 5)
-        print(npts)
     ims = numpy.array([images[i] for i in range(0, len(images), 5)])
 
     ranks = numpy.zeros(5 * npts)
