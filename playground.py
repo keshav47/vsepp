@@ -89,7 +89,7 @@ def main():
 
 
     for i, train_data in enumerate(train_loader):
-        print(train_data)
+        print(train_data[0].size())
         break
 
 if __name__ == '__main__':
