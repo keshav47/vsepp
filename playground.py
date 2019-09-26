@@ -89,7 +89,7 @@ def main():
 
 
     for i, train_data in enumerate(train_loader):
-        print(train_data[1])
+        print(train_data[1:])
         if i ==5:
             break
 
