@@ -11,7 +11,8 @@ import torch
 from model import VSE, order_sim
 from collections import OrderedDict
 import argparse
-
+import logging
+import tensorboard_logger as tb_logger
 
 def main():
     # Hyper Parameters
