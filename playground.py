@@ -17,7 +17,6 @@ import argparse
 
 def main():
     # Hyper Parameters
-    parser import tensorboard_logger as tb_logger= argparse.ArgumentParser()
     parser.add_argument('--data_path', default='/w/31/faghri/vsepp_data/',
                         help='path to datasets')
     parser.add_argument('--data_name', default='precomp',
