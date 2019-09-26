@@ -92,5 +92,4 @@ def main():
             break
 
 if __name__ == '__main__':
-    checkpoint = torch.load(model_path)
     main()
