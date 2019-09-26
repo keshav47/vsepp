@@ -17,7 +17,7 @@ import argparse
 
 def main():
     # Hyper Parameters
-    parser = argparse.ArgumentParser()
+    parser import tensorboard_logger as tb_logger= argparse.ArgumentParser()
     parser.add_argument('--data_path', default='/w/31/faghri/vsepp_data/',
                         help='path to datasets')
     parser.add_argument('--data_name', default='precomp',
@@ -87,5 +87,9 @@ def main():
     train_loader, val_loader = data.get_loaders(
         opt.data_name, vocab, opt.crop_size, opt.batch_size, opt.workers, opt)
 
+
     for i, train_data in enumerate(train_loader):
         print(train_data)
+
+if __name__ == '__main__':
+    main()
