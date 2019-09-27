@@ -346,8 +346,12 @@ class VSE(object):
         """Compute the image and caption embeddings
         """
         # Set mini-batch dataset
-        images = Variable(images, volatile=volatile)
-        captions = Variable(captions, volatile=volatile)
+        # images = Variable(images, volatile=volatile)
+        with torch.no_grad():
+            images = Variable(images)
+        # images = Variable(images, volatile=volatile)
+        with torch.no_grad():
+            captions = Variable(captions)
         if torch.cuda.is_available():
             images = images.cuda()
             captions = captions.cuda()
