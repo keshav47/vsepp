@@ -347,11 +347,9 @@ class VSE(object):
         """
         # Set mini-batch dataset
         # images = Variable(images, volatile=volatile)
-        with torch.no_grad():
-            images = Variable(images)
+        images = Variable(images)
         # images = Variable(images, volatile=volatile)
-        with torch.no_grad():
-            captions = Variable(captions)
+        captions = Variable(captions)
         if torch.cuda.is_available():
             images = images.cuda()
             captions = captions.cuda()
