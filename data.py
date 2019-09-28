@@ -74,7 +74,7 @@ def get_paths(path, name='coco', use_restval=False):
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
         imgdir = '/home/jupyter/filestore/fashion_gen_data/images'
-        cap = '/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json'
+        cap = '/home/jupyter/filestore/keshav/vsepp/data/fashion/dataset_fashion.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
