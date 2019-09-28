@@ -77,7 +77,7 @@ def main():
     print(opt)
 
 
-    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
+    vocab = pickle.load(open('/home/ubuntu/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
     checkpoint = torch.load("model_best.pth.tar")

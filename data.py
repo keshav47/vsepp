@@ -31,7 +31,7 @@ def get_paths(path, name='coco', use_restval=False):
     ids = {}
     if 'coco' == name:
         # imgdir = os.path.join(path, 'images')
-        imgdir = '/home/jupyter/filestore/ms-coco/'
+        imgdir = '/home/ubuntu/filestore/ms-coco/'
         capdir = os.path.join(path, 'annotations')
         roots['train'] = {
             'img': os.path.join(imgdir, 'train2014'),
@@ -73,8 +73,8 @@ def get_paths(path, name='coco', use_restval=False):
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
-        imgdir = '/home/jupyter/filestore/fashion_gen_data/images'
-        cap = '/home/jupyter/filestore/keshav/vsepp/data/fashion/dataset_fashion.json'
+        imgdir = '/home/ubuntu/filestore/fashion_gen_data/images'
+        cap = '/home/ubuntu/filestore/keshav/vsepp/data/fashion/dataset_fashion.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
