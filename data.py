@@ -351,11 +351,11 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 
-        transform = get_transform(data_name, 'test', opt)
-        val_loader = get_loader_single(opt.data_name, 'test',
-                                       roots['test']['img'],
-                                       roots['test']['cap'],
-                                       vocab, transform, ids=ids['test'],
+        transform = get_transform(data_name, 'val', opt)
+        val_loader = get_loader_single(opt.data_name, 'val',
+                                       roots['val']['img'],
+                                       roots['val']['cap'],
+                                       vocab, transform, ids=ids['val'],
                                        batch_size=batch_size, shuffle=False,
                                        num_workers=workers,
                                        collate_fn=collate_fn)
