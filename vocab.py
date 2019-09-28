@@ -54,7 +54,7 @@ def from_coco_json(path):
 
 
 def from_flickr_json(path):
-    with open('/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json') as json_file:
+    with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/dataset_fashion.json') as json_file:
         dataset = json.load(json_file)
     dataset = dataset['images']
     # dataset = json.load("/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json")['images']
