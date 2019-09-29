@@ -92,13 +92,16 @@ def main():
     for i, (images, captions, lengths, ids) in enumerate(train_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
-        image_array[i] = img_emb.cpu().detach().numpy()
-        text_array[i] = cap_emb.cpu().detach().numpy()
-        if i%100==0:
-            print("===========> ",i)
-
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy",image_array)
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/text_embedding.npy",text_array)
+        print(img_emb.size())
+        print(cap_emb.size())
+        break
+    #     image_array[i] = img_emb.cpu().detach().numpy()
+    #     text_array[i] = cap_emb.cpu().detach().numpy()
+    #     if i%100==0:
+    #         print("===========> ",i)
+    #
+    # numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy",image_array)
+    # numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/text_embedding.npy",text_array)
 
 
 if __name__ == '__main__':
