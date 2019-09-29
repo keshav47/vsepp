@@ -97,8 +97,8 @@ def main():
         if i%100==0:
             print("===========> ",i)
 
-    numpy.save("image_embedding.npy",image_array)
-    numpy.save("text_embedding.npy",text_array)
+    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy",image_array)
+    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/text_embedding.npy",text_array)
 
 
 if __name__ == '__main__':
