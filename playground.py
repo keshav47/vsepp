@@ -87,8 +87,8 @@ def main():
     train_loader, val_loader = data.get_loaders(
         opt.data_name, vocab, opt.crop_size, opt.batch_size, opt.workers, opt)
 
-    image_array = numpy.zeros((13707,1024))
-    text_array = numpy.zeros((13707,1024))
+    image_array = numpy.zeros((54746,1024))
+    text_array = numpy.zeros((54746,1024))
     for i, (images, captions, lengths, ids) in enumerate(train_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
