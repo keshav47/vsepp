@@ -1,18 +1,91 @@
-# from comet_ml import Experiment
+from comet_ml import Experiment
 import numpy as np
 import pandas as pd
 import pickle
+from collections import defaultdict
+import re
+from bs4 import BeautifulSoup
+import sys
+import os
+import yaml
 
+# Add the following code anywhere in your machine learning file
+experiment = Experiment(api_key="2XZLX4rf67ICxldQrqBKVAFjT",
+                        project_name="vsepp", workspace="iiitian-chandan")
+
+from keras.layers import Embedding
+from keras.layers import Dense, Input, Flatten, Add
+from keras.layers import Conv1D, MaxPooling1D, Embedding, Dropout, LSTM, GRU, Bidirectional, TimeDistributed
+from keras.models import Model
+
+from keras import backend as K
+from keras.engine.topology import Layer, InputSpec
+from keras import initializers as initializers, regularizers, constraints
+from sklearn.metrics import roc_auc_score
+from keras.callbacks import Callback, ModelCheckpoint
+from sklearn.preprocessing import LabelBinarizer
+from keras.models import load_model
+import sys
+import os
+import math
+import random
+import warnings
+import numpy as np
+from sklearn import svm
+import keras.backend as K
+from keras.models import Model
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from keras.layers import Input,Add
+from keras.engine.topology import Layer
+from sklearn.metrics import accuracy_score
+from keras.layers.core import  Activation, Dense
+from numpy import array
+from keras.preprocessing.text import one_hot
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.layers.embeddings import Embedding
+from keras import optimizers
+import numpy as np
+import pandas as pd
+import cv2
+import keras
+import keras.backend as K
+from scipy import spatial
+from statistics import mean
+from tqdm import tqdm
+import pickle
 
 keys = ['parent_category','child_category']
 
+EPOCHS = 100
+BATCH_SIZE = 50
+MODEL_OUTPUT_DIR = '/home/jupyter/filestore/keshav/vsepp/weights/classification/'
+
+with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/config_classification.pickle', 'rb') as handle:
+    config = pickle.load(handle)
+
+with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/train_classification.pickle', 'rb') as handle:
+    att_config_train = pickle.load(handle)
+
+with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/test_classification.pickle', 'rb') as handle:
+    att_config_test = pickle.load(handle)
+
+x_train = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy")
+x_test = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/test_image_embedding.npy")
+
+
+indices = np.arange(x_train.shape[0])
+np.random.shuffle(indices)
+x_train = np.asarray(x_train)[indices]
+
+
 fit_list_train = []
 for key in keys:
-    fit_list_train.append(np.array(train_save_dict[key]))
+    fit_list_train.append(np.asarray(att_config_train[key])[indices])
 
-fit_list_test = []
-for key in keys:
-    fit_list_test.append(np.array(test_save_dict[key]))
 
 
 nb_attributes = []
@@ -71,12 +144,10 @@ model = Model(input=base_output,
 model.compile(optimizer=optimizers.SGD(lr=1e-2), metrics=['accuracy'],
               loss=loss)
 
-# filepath = MODEL_OUTPUT_DIR + "model_{epoch:02d}.hdf5"
-# checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=False, save_weights_only=True,
-#                              mode='auto', period=1)
-# checkpoints = [checkpoint]
-EPOCHS = 100
-BATCH_SIZE = 50
+filepath = MODEL_OUTPUT_DIR + "model_{epoch:02d}.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=False, save_weights_only=True,
+                             mode='auto', period=1)
+checkpoints = [checkpoint]
 
 model.fit(x_train, fit_list_train,validation_data=(x_test,fit_list_test)
-,epochs=EPOCHS, batch_size=BATCH_SIZE)
+,epochs=EPOCHS, batch_size=BATCH_SIZE,callbacks=checkpoints)
