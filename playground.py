@@ -19,7 +19,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='/w/31/faghri/vsepp_data/',
                         help='path to datasets')
-    parser.add_argument('--data_name', default='precomp',
+    parser.add_argument('--data_name', default='fashion',
                         help='{coco,f8k,f30k,10crop}_precomp|coco|f8k|f30k')
     parser.add_argument('--vocab_path', default='./vocab/',
                         help='Path to saved vocabulary pickle files.')
@@ -27,7 +27,7 @@ def main():
                         help='Rank loss margin.')
     parser.add_argument('--num_epochs', default=30, type=int,
                         help='Number of training epochs.')
-    parser.add_argument('--batch_size', default=128, type=int,
+    parser.add_argument('--batch_size', default=1, type=int,
                         help='Size of a training mini-batch.')
     parser.add_argument('--word_dim', default=300, type=int,
                         help='Dimensionality of the word embedding.')
@@ -59,7 +59,7 @@ def main():
                         help='Dimensionality of the image embedding.')
     parser.add_argument('--finetune', action='store_true',
                         help='Fine-tune the image encoder.')
-    parser.add_argument('--cnn_type', default='vgg19',
+    parser.add_argument('--cnn_type', default='resnet152',
                         help="""The CNN used for image encoder
                         (e.g. vgg19, resnet152)""")
     parser.add_argument('--use_restval', action='store_true',
