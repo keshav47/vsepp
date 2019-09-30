@@ -61,7 +61,7 @@ import pickle
 keys = ['parent_category','child_category']
 
 EPOCHS = 100
-BATCH_SIZE = 50
+BATCH_SIZE = 64
 MODEL_OUTPUT_DIR = '/home/jupyter/filestore/keshav/vsepp/weights/classification/'
 
 with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/config_classification.pickle', 'rb') as handle:
@@ -145,7 +145,7 @@ for i in output_keys:
 model = Model(input=base_output,
               outputs=output_list)
 
-model.compile(optimizer=optimizers.SGD(lr=1e-2), metrics=['accuracy'],
+model.compile(optimizer=optimizers.SGD(lr=1e-3), metrics=['accuracy'],
               loss=loss)
 
 filepath = MODEL_OUTPUT_DIR + "model_{epoch:02d}.hdf5"
