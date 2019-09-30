@@ -86,6 +86,10 @@ fit_list_train = []
 for key in keys:
     fit_list_train.append(np.asarray(att_config_train[key])[indices])
 
+fit_list_test = []
+for key in keys:
+    fit_list_test.append(np.array(att_config_test[key]))
+
 
 
 nb_attributes = []
