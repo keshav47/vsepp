@@ -87,3 +87,6 @@ with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/train_classificatio
 
 with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/test_classification.pickle', 'wb') as handle:
     pickle.dump(test_save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/config_classification.pickle', 'wb') as handle:
+    pickle.dump(config, handle, protocol=pickle.HIGHEST_PROTOCOL)
