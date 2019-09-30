@@ -89,7 +89,7 @@ def main():
 
     image_array = numpy.zeros((54746,1024))
     text_array = numpy.zeros((54746,1024))
-    for i, (images, captions, lengths, ids) in enumerate(train_loader):
+    for i, (images, captions, lengths, ids) in enumerate(val_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
         image_array[i] = img_emb.cpu().detach().numpy()
