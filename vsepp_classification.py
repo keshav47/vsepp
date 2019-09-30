@@ -73,8 +73,8 @@ with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/train_classificatio
 with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/test_classification.pickle', 'rb') as handle:
     att_config_test = pickle.load(handle)
 
-x_train = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy")
-x_test = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/test_image_embedding.npy")
+x_train = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/text_embedding.npy")
+x_test = np.load("/home/jupyter/filestore/keshav/vsepp/data/fashion/test_text_embedding.npy")
 
 
 indices = np.arange(x_train.shape[0])
