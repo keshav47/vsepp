@@ -145,7 +145,7 @@ for i in output_keys:
 model = Model(input=base_output,
               outputs=output_list)
 
-model.compile(optimizer=optimizers.SGD(lr=1e-3), metrics=['accuracy'],
+model.compile(optimizer=optimizers.SGD(lr=5e-4), metrics=['accuracy'],
               loss=loss)
 
 filepath = MODEL_OUTPUT_DIR + "model_{epoch:02d}.hdf5"
