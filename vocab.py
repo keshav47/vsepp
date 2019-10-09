@@ -120,7 +120,7 @@ def main(data_path, data_name):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='/w/31/faghri/vsepp_data/')
-    parser.add_argument('--data_name', default='coco',
+    parser.add_argument('--data_name', default='fashion',
                         help='{coco,f8k,f30k,10crop}_precomp|coco|f8k|f30k')
     opt = parser.parse_args()
     main(opt.data_path, opt.data_name)
