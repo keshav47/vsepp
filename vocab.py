@@ -54,7 +54,8 @@ def from_coco_json(path):
 
 
 def from_flickr_json(path):
-    with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/dataset_fashion.json') as json_file:
+    # with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/dataset_fashion.json') as json_file:
+    with open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/dataset_fashion_myntra.json') as json_file:
         dataset = json.load(json_file)
     dataset = dataset['images']
     # dataset = json.load("/home/jupyter/filestore/keshav/show-attend-tell/data/dataset_fashion.json")['images']
@@ -110,7 +111,8 @@ def build_vocab(data_path, data_name, jsons, threshold):
 
 def main(data_path, data_name):
     vocab = build_vocab(data_path, data_name, jsons=annotations, threshold=0)
-    with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'wb') as f:
+    # with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'wb') as f:
+    with open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/fashion_myntra_vocab.pkl', 'wb') as f:
         pickle.dump(vocab, f, pickle.HIGHEST_PROTOCOL)
     print("Saved vocabulary file to ", './vocab/%s_vocab.pkl' % data_name)
 

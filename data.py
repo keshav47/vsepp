@@ -342,20 +342,20 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
         # Build Dataset Loader
         roots, ids = get_paths(dpath, data_name, opt.use_restval)
 
-        transform = get_transform(data_name, 'val', opt)
-        train_loader = get_loader_single(opt.data_name, 'val',
-                                         roots['val']['img'],
-                                         roots['val']['cap'],
-                                         vocab, transform, ids=ids['val'],
+        transform = get_transform(data_name, 'train', opt)
+        train_loader = get_loader_single(opt.data_name, 'train',
+                                         roots['train']['img'],
+                                         roots['train']['cap'],
+                                         vocab, transform, ids=ids['train'],
                                          batch_size=batch_size, shuffle=True,
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 
-        transform = get_transform(data_name, 'train', opt)
-        val_loader = get_loader_single(opt.data_name, 'train',
-                                       roots['train']['img'],
-                                       roots['train']['cap'],
-                                       vocab, transform, ids=ids['train'],
+        transform = get_transform(data_name, 'val', opt)
+        val_loader = get_loader_single(opt.data_name, 'val',
+                                       roots['val']['img'],
+                                       roots['val']['cap'],
+                                       vocab, transform, ids=ids['val'],
                                        batch_size=batch_size, shuffle=False,
                                        num_workers=workers,
                                        collate_fn=collate_fn)
