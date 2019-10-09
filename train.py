@@ -21,7 +21,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='/w/31/faghri/vsepp_data/',
                         help='path to datasets')
-    parser.add_argument('--data_name', default='precomp',
+    parser.add_argument('--data_name', default='fashion',
                         help='{coco,f8k,f30k,10crop}_precomp|coco|f8k|f30k')
     parser.add_argument('--vocab_path', default='./vocab/',
                         help='Path to saved vocabulary pickle files.')
@@ -84,7 +84,8 @@ def main():
     # Load Vocabulary Wrapper
     # vocab = pickle.load(open(os.path.join(
     #     opt.vocab_path, '%s_vocab.pkl' % opt.data_name), 'rb'))
-    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
+    # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/fashion_myntra_vocab.pkl', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
 
