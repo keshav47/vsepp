@@ -77,18 +77,19 @@ def main():
     print(opt)
 
 
-    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
+    # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/fashion_myntra_vocab.pkl', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
-    checkpoint = torch.load("/home/jupyter/filestore/keshav/vsepp/weights/exp1_finetune_2/model_best.pth.tar")
+    checkpoint = torch.load("/home/jupyter/filestore/keshav/vsepp/weights/myntra_exp1_finetune/model_best.pth.tar")
     model = VSE(opt)
     model.load_state_dict(checkpoint['model'])
 
     train_loader, val_loader = data.get_loaders(
         opt.data_name, vocab, opt.crop_size, opt.batch_size, opt.workers, opt)
 
-    image_array = numpy.zeros((54746,1024))
-    text_array = numpy.zeros((54746,1024))
+    image_array = numpy.zeros((26862,1024))
+    text_array = numpy.zeros((26862,1024))
     for i, (images, captions, lengths, ids) in enumerate(val_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
@@ -97,8 +98,8 @@ def main():
         if i%100==0:
             print("===========> ",i)
 
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/image_embedding.npy",image_array)
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/fashion/text_embedding.npy",text_array)
+    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/image_embedding.npy",image_array)
+    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/text_embedding.npy",text_array)
 
 
 if __name__ == '__main__':
