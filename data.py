@@ -73,8 +73,8 @@ def get_paths(path, name='coco', use_restval=False):
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
-        imgdir = '/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/images_resize'
-        cap = '/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/dataset_fashion_myntra.json'
+        imgdir = '/home/jupyter/filestore/vestiairecollective_images'
+        cap = '/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_vsepp_dataset.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
@@ -347,7 +347,7 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
                                          roots['train']['img'],
                                          roots['train']['cap'],
                                          vocab, transform, ids=ids['train'],
-                                         batch_size=batch_size, shuffle=False,
+                                         batch_size=batch_size, shuffle=True,
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 

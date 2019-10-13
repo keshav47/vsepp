@@ -61,7 +61,7 @@ def main():
                         help='Dimensionality of the image embedding.')
     parser.add_argument('--finetune', action='store_true',
                         help='Fine-tune the image encoder.')
-    parser.add_argument('--cnn_type', default='vgg19',
+    parser.add_argument('--cnn_type', default='resnet152',
                         help="""The CNN used for image encoder
                         (e.g. vgg19, resnet152)""")
     parser.add_argument('--use_restval', action='store_true',
@@ -85,7 +85,7 @@ def main():
     # vocab = pickle.load(open(os.path.join(
     #     opt.vocab_path, '%s_vocab.pkl' % opt.data_name), 'rb'))
     # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
-    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/fashion_myntra_vocab.pkl', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_vsepp_vocab.pickle', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
 
