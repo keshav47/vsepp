@@ -7,6 +7,7 @@ from PIL import Image
 from pycocotools.coco import COCO
 import numpy as np
 import json as jsonmod
+import cv2
 
 
 def get_paths(path, name='coco', use_restval=False):
@@ -73,7 +74,7 @@ def get_paths(path, name='coco', use_restval=False):
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
-        imgdir = '/home/jupyter/filestore/vestiairecollective_images'
+        imgdir = '/home/jupyter/vestiairecollective_images_training_last'
         cap = '/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_vsepp_dataset.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
