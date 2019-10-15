@@ -75,11 +75,13 @@ for key in keys:
     save_dict[key] = to_categorical(np.asarray(df[key]))
 
 test_save_dict = {}
-test_save_dict['child_category'] = save_dict['child_category'][count:]
-test_save_dict['parent_category'] = save_dict['parent_category'][count:]
+test_save_dict['classification.l1'] = save_dict['meta.training_ir_attributes.category.l1'][count:]
+test_save_dict['classification.l2'] = save_dict['meta.training_ir_attributes.category.l2'][count:]
+test_save_dict['classification.l3'] = save_dict['meta.training_ir_attributes.category.l3'][count:]
 train_save_dict = {}
-train_save_dict['child_category'] = save_dict['child_category'][:count]
-train_save_dict['parent_category'] = save_dict['parent_category'][:count]
+test_save_dict['classification.l1'] = save_dict['meta.training_ir_attributes.category.l1'][:count]
+test_save_dict['classification.l2'] = save_dict['meta.training_ir_attributes.category.l2'][:count]
+test_save_dict['classification.l3'] = save_dict['meta.training_ir_attributes.category.l3'][:count]
 
 
 with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_train.pickle', 'wb') as handle:
