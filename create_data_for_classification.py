@@ -3,7 +3,6 @@ import pandas as pd
 import pickle
 from collections import defaultdict
 import re
-from bs4 import BeautifulSoup
 import sys
 import os
 import yaml
@@ -13,16 +12,17 @@ from tqdm import tqdm
 from keras.utils.np_utils import to_categorical
 import pickle
 
-dataFrame = pd.read_csv("/home/jupyter/filestore/fashion_gen_data/csv/multimodal_train.csv",sep='|')
-dataFrame = dataFrame[['parent_category','child_category']]
+dataFrame = pd.read_csv("/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_train.csv")
+dataFrame = dataFrame[['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']]
 print(len(dataFrame))
-dataFrame_test = pd.read_csv("/home/jupyter/filestore/fashion_gen_data/csv/multimodal_test.csv",sep='|')
-dataFrame_test = dataFrame_test[['parent_category','child_category']]
+count = len(dataFrame)
+dataFrame_test = pd.read_csv("/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_test.csv")
+dataFrame_test = dataFrame_test[['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']]
 print(len(dataFrame_test))
 dataFrame = dataFrame.append(dataFrame_test,ignore_index=True)
 dataFrame = dataFrame.replace(np.nan, '', regex=True)
 
-keys = ['parent_category','child_category']
+keys = ['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']
 
 def initialize_dict(keys):
     main_dict = {}
@@ -75,18 +75,18 @@ for key in keys:
     save_dict[key] = to_categorical(np.asarray(df[key]))
 
 test_save_dict = {}
-test_save_dict['child_category'] = save_dict['child_category'][54746:]
-test_save_dict['parent_category'] = save_dict['parent_category'][54746:]
+test_save_dict['child_category'] = save_dict['child_category'][count:]
+test_save_dict['parent_category'] = save_dict['parent_category'][count:]
 train_save_dict = {}
-train_save_dict['child_category'] = save_dict['child_category'][:54746]
-train_save_dict['parent_category'] = save_dict['parent_category'][:54746]
+train_save_dict['child_category'] = save_dict['child_category'][:count]
+train_save_dict['parent_category'] = save_dict['parent_category'][:count]
 
 
-with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/train_classification.pickle', 'wb') as handle:
+with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_train.pickle', 'wb') as handle:
     pickle.dump(train_save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/test_classification.pickle', 'wb') as handle:
+with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_test.pickle', 'wb') as handle:
     pickle.dump(test_save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('/home/jupyter/filestore/keshav/vsepp/data/fashion/config_classification.pickle', 'wb') as handle:
+with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_config.pickle', 'wb') as handle:
     pickle.dump(config, handle, protocol=pickle.HIGHEST_PROTOCOL)
