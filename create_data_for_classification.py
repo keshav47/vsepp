@@ -79,9 +79,9 @@ test_save_dict['classification.l1'] = save_dict['meta.training_ir_attributes.cat
 test_save_dict['classification.l2'] = save_dict['meta.training_ir_attributes.category.l2'][count:]
 test_save_dict['classification.l3'] = save_dict['meta.training_ir_attributes.category.l3'][count:]
 train_save_dict = {}
-test_save_dict['classification.l1'] = save_dict['meta.training_ir_attributes.category.l1'][:count]
-test_save_dict['classification.l2'] = save_dict['meta.training_ir_attributes.category.l2'][:count]
-test_save_dict['classification.l3'] = save_dict['meta.training_ir_attributes.category.l3'][:count]
+train_save_dict['classification.l1'] = save_dict['meta.training_ir_attributes.category.l1'][:count]
+train_save_dict['classification.l2'] = save_dict['meta.training_ir_attributes.category.l2'][:count]
+train_save_dict['classification.l3'] = save_dict['meta.training_ir_attributes.category.l3'][:count]
 
 
 with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_train.pickle', 'wb') as handle:
