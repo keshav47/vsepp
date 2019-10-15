@@ -43,7 +43,7 @@ def main():
                         help='Initial learning rate.')
     parser.add_argument('--lr_update', default=15, type=int,
                         help='Number of epochs to update the learning rate.')
-    parser.add_argument('--workers', default=10, type=int,
+    parser.add_argument('--workers', default=32, type=int,
                         help='Number of data loader workers.')
     parser.add_argument('--log_step', default=10, type=int,
                         help='Number of steps to print and record the log.')
