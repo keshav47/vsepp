@@ -90,3 +90,5 @@ with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecoll
 
 with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_config.pickle', 'wb') as handle:
     pickle.dump(config, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+print(config)
