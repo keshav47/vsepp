@@ -348,7 +348,7 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
                                          roots['train']['img'],
                                          roots['train']['cap'],
                                          vocab, transform, ids=ids['train'],
-                                         batch_size=batch_size, shuffle=True,
+                                         batch_size=batch_size, shuffle=False,
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 

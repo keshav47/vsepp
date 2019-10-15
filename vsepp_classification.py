@@ -149,7 +149,7 @@ model.compile(optimizer=optimizers.SGD(lr=5e-4), metrics=['accuracy'],
               loss=loss)
 
 filepath = MODEL_OUTPUT_DIR + "model_{epoch:02d}.hdf5"
-checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=False, save_weights_only=True,
+checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, save_weights_only=True,
                              mode='auto', period=1)
 checkpoints = [checkpoint]
 

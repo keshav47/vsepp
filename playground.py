@@ -78,28 +78,28 @@ def main():
 
 
     # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
-    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/fashion_myntra_vocab.pkl', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_vsepp_vocab.pickle', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
-    checkpoint = torch.load("/home/jupyter/filestore/keshav/vsepp/weights/myntra_exp1_finetune/model_best.pth.tar")
+    checkpoint = torch.load("/home/jupyter/filestore/keshav/vestiairecollective/weights/vsepp_exp_finetune/model_best.pth.tar")
     model = VSE(opt)
     model.load_state_dict(checkpoint['model'])
 
     train_loader, val_loader = data.get_loaders(
         opt.data_name, vocab, opt.crop_size, opt.batch_size, opt.workers, opt)
 
-    image_array = numpy.zeros((26862,1024))
-    text_array = numpy.zeros((26862,1024))
-    for i, (images, captions, lengths, ids) in enumerate(train_loader):
+    image_array = numpy.zeros((25129,1024))
+    text_array = numpy.zeros((25129,1024))
+    for i, (images, captions, lengths, ids) in enumerate(val_loader):
         img_emb, cap_emb = model.forward_emb(images, captions, lengths,
                                              volatile=True)
         image_array[i] = img_emb.cpu().detach().numpy()
-        text_array[i] = cap_emb.cpu().detach().numpy()
+        # text_array[i] = cap_emb.cpu().detach().numpy()
         if i%100==0:
             print("===========> ",i)
 
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/image_embedding.npy",image_array)
-    numpy.save("/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/text_embedding.npy",text_array)
+    numpy.save("/home/jupyter/filestore/keshav/vestiairecollective/data/vsepp/vestiairecollective_vsepp_classification_image_test.npy",image_array)
+    # numpy.save("/home/jupyter/filestore/keshav/vsepp/data/myntra/fashion-dataset/text_embedding.npy",text_array)
 
 
 if __name__ == '__main__':
