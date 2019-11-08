@@ -51,7 +51,7 @@ def get_paths(path, name='coco', use_restval=False):
             'cap': (roots['train']['cap'], roots['val']['cap'])
         }
         ids['train'] = np.load(os.path.join(capdir, 'coco_train_ids.npy'))
-        ids['val'] = np.load(os.path.join(capdir, 'coco_dev_ids.npy'))[:5000]
+        ids['val'] = np.load(os.path.join(capdir, 'coco_dev_ids.npy'))
         ids['test'] = np.load(os.path.join(capdir, 'coco_test_ids.npy'))
         ids['trainrestval'] = (
             ids['train'],
@@ -74,8 +74,8 @@ def get_paths(path, name='coco', use_restval=False):
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
-        imgdir = '/home/jupyter/vestiairecollective_images_training_last'
-        cap = '/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_vsepp_dataset.json'
+        imgdir = '/home/ubuntu/filestore/combined_products_2019_03_14'
+        cap = '/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
@@ -348,7 +348,7 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
                                          roots['train']['img'],
                                          roots['train']['cap'],
                                          vocab, transform, ids=ids['train'],
-                                         batch_size=batch_size, shuffle=False,
+                                         batch_size=batch_size, shuffle=True,
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 
