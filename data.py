@@ -74,7 +74,7 @@ def get_paths(path, name='coco', use_restval=False):
         roots['test'] = {'img': imgdir, 'cap': cap}
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
-        imgdir = '/home/ubuntu/filestore/combined_products_2019_03_14'
+        imgdir = '/home/jupyter/filestore/combined_products_2019_03_14'
         cap = '/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
