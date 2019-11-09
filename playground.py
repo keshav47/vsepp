@@ -78,7 +78,7 @@ def main():
 
 
     # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
-    vocab = pickle.load(open('/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_vocab.pickle', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp_vocab.pickle', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
     checkpoint = torch.load("/home/jupyter/filestore/product_matching/models/vsepp/vsepp_v1_finetune/model_best.pth.tar")
