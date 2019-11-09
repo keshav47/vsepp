@@ -81,7 +81,7 @@ def main():
     vocab = pickle.load(open('/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp_vocab_name_only.pickle', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
-    checkpoint = torch.load("/home/jupyter/filestore/product_matching/models/vsepp/vsepp_v1_finetune_name_only/model_best.pth.tar")
+    checkpoint = torch.load("/home/jupyter/filestore/product_matching/models/vsepp/vsepp_v1_name_only_finetune/model_best.pth.tar")
     model = VSE(opt)
     model.load_state_dict(checkpoint['model'])
 
