@@ -75,7 +75,7 @@ def get_paths(path, name='coco', use_restval=False):
         ids = {'train': None, 'val': None, 'test': None}
     elif 'fashion' == name:
         imgdir = '/home/jupyter/filestore/combined_products_2019_03_14'
-        cap = '/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_name_only.json'
+        cap = '/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp.json'
         roots['train'] = {'img': imgdir, 'cap': cap}
         roots['val'] = {'img': imgdir, 'cap': cap}
         roots['test'] = {'img': imgdir, 'cap': cap}
@@ -348,7 +348,7 @@ def get_loaders(data_name, vocab, crop_size, batch_size, workers, opt):
                                          roots['train']['img'],
                                          roots['train']['cap'],
                                          vocab, transform, ids=ids['train'],
-                                         batch_size=batch_size, shuffle=False,
+                                         batch_size=batch_size, shuffle=True,
                                          num_workers=workers,
                                          collate_fn=collate_fn)
 
