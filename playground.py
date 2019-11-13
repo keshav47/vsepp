@@ -78,10 +78,10 @@ def main():
 
 
     # vocab = pickle.load(open('/home/jupyter/filestore/keshav/vsepp/data/fashion/fashion_vocab.pkl', 'rb'))
-    vocab = pickle.load(open('/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp_vocab_name_only.pickle', 'rb'))
+    vocab = pickle.load(open('/home/jupyter/filestore/product_matching/data/vsepp_data/training_vsepp_vocab.pickle', 'rb'))
     opt.vocab_size = len(vocab)
     print(opt)
-    checkpoint = torch.load("/home/jupyter/filestore/product_matching/models/vsepp/vsepp_v1_name_only_finetune/model_best.pth.tar")
+    checkpoint = torch.load("/home/jupyter/filestore/product_matching/models/vsepp/vsepp_v1_finetune/model_best.pth.tar")
     model = VSE(opt)
     model.load_state_dict(checkpoint['model'])
 
@@ -98,8 +98,8 @@ def main():
         if i%100==0:
             print("===========> ",i)
 
-    numpy.save("/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_image_name_only.npy",image_array)
-    numpy.save("/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_text_name_only.npy",text_array)
+    numpy.save("/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_image.npy",image_array)
+    numpy.save("/home/jupyter/filestore/product_matching/data/vsepp_data/validation_vsepp_text.npy",text_array)
 
 
 if __name__ == '__main__':
