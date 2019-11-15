@@ -12,17 +12,17 @@ from tqdm import tqdm
 from keras.utils.np_utils import to_categorical
 import pickle
 
-dataFrame = pd.read_csv("/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_train.csv")
-dataFrame = dataFrame[['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']]
+dataFrame = pd.read_csv("/home/ubuntu/filestore/product_matching/data/classification/training_classification.csv")
+dataFrame = dataFrame[['meta.breadcrumbs.1','meta.breadcrumbs.2','meta.breadcrumbs.3']]
 print(len(dataFrame))
 count = len(dataFrame)
-dataFrame_test = pd.read_csv("/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_test.csv")
-dataFrame_test = dataFrame_test[['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']]
+dataFrame_test = pd.read_csv("/home/ubuntu/filestore/product_matching/data/classification/testing_classification.csv")
+dataFrame_test = dataFrame_test[['meta.breadcrumbs.1','meta.breadcrumbs.2','meta.breadcrumbs.3']]
 print(len(dataFrame_test))
 dataFrame = dataFrame.append(dataFrame_test,ignore_index=True)
 dataFrame = dataFrame.replace(np.nan, '', regex=True)
 
-keys = ['meta.training_ir_attributes.category.l1','meta.training_ir_attributes.category.l2','meta.training_ir_attributes.category.l3']
+keys = ['meta.breadcrumbs.1','meta.breadcrumbs.2','meta.breadcrumbs.3']
 
 def initialize_dict(keys):
     main_dict = {}
@@ -75,22 +75,22 @@ for key in keys:
     save_dict[key] = to_categorical(np.asarray(df[key]))
 
 test_save_dict = {}
-test_save_dict['meta.training_ir_attributes.category.l1'] = save_dict['meta.training_ir_attributes.category.l1'][count:]
-test_save_dict['meta.training_ir_attributes.category.l2'] = save_dict['meta.training_ir_attributes.category.l2'][count:]
-test_save_dict['meta.training_ir_attributes.category.l3'] = save_dict['meta.training_ir_attributes.category.l3'][count:]
+test_save_dict['meta.breadcrumbs.1'] = save_dict['meta.breadcrumbs.1'][count:]
+test_save_dict['meta.breadcrumbs.2'] = save_dict['meta.breadcrumbs.2'][count:]
+test_save_dict['meta.breadcrumbs.3'] = save_dict['meta.breadcrumbs.3'][count:]
 train_save_dict = {}
-train_save_dict['meta.training_ir_attributes.category.l1'] = save_dict['meta.training_ir_attributes.category.l1'][:count]
-train_save_dict['meta.training_ir_attributes.category.l2'] = save_dict['meta.training_ir_attributes.category.l2'][:count]
-train_save_dict['meta.training_ir_attributes.category.l3'] = save_dict['meta.training_ir_attributes.category.l3'][:count]
+train_save_dict['meta.breadcrumbs.1'] = save_dict['meta.breadcrumbs.1'][:count]
+train_save_dict['meta.breadcrumbs.2'] = save_dict['meta.breadcrumbs.2'][:count]
+train_save_dict['meta.breadcrumbs.3'] = save_dict['meta.breadcrumbs.3'][:count]
 
 
-with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_train.pickle', 'wb') as handle:
+with open('/home/ubuntu/filestore/product_matching/data/classification/classification_train.pickle', 'wb') as handle:
     pickle.dump(train_save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_test.pickle', 'wb') as handle:
+with open('/home/ubuntu/filestore/product_matching/data/classification/classification_test.pickle', 'wb') as handle:
     pickle.dump(test_save_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('/home/jupyter/filestore/keshav/vestiairecollective/data/vestiairecollective_classification_config.pickle', 'wb') as handle:
+with open('/home/ubuntu/filestore/product_matching/data/classification/classification_config.pickle', 'wb') as handle:
     pickle.dump(config, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 print(config)
